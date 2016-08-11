@@ -1,11 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: TwitterAPITest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.258 sec <<< FAILURE!
-testConnection(TwitterAPITest)  Time elapsed: 0.246 sec  <<< FAILURE!
-junit.framework.AssertionFailedError
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.assertTrue(Assert.java:20)
-	at junit.framework.Assert.assertTrue(Assert.java:27)
-	at TwitterAPITest.testConnection(TwitterAPITest.java:30)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.253 sec <<< FAILURE!
+testConnection(TwitterAPITest)  Time elapsed: 0.25 sec  <<< ERROR!
+java.lang.NullPointerException
+	at TwitterAPIConnection.getNrOfMessages(TwitterAPIConnection.java:112)
+	at TwitterAPITest.testConnection(TwitterAPITest.java:27)
 

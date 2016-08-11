@@ -24,7 +24,7 @@ public class TwitterAPITest extends TestCase {
      */
     public void testConnection () {
         TwitterAPIConnection connection = new TwitterAPIConnection();
-        String aTweet = connection.getLatestTweet();
+        String aTweet = connection.getNrOfMessages(1).toString();
         System.out.println(aTweet);
         assertTrue(connection.testConnection());
         assertTrue(aTweet != null);

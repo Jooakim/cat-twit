@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="1" name="TwitterAPITest" time="0.246" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="TwitterAPITest" time="0.25" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk/jre/lib/amd64"/>
@@ -59,14 +59,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="TwitterAPITest" name="testConnection" time="0.246">
-    <failure type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.assertTrue(Assert.java:20)
-	at junit.framework.Assert.assertTrue(Assert.java:27)
-	at TwitterAPITest.testConnection(TwitterAPITest.java:30)
-</failure>
-    <system-out>null
+  <testcase classname="TwitterAPITest" name="testConnection" time="0.25">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at TwitterAPIConnection.getNrOfMessages(TwitterAPIConnection.java:112)
+	at TwitterAPITest.testConnection(TwitterAPITest.java:27)
+</error>
+    <system-out>The client read 0 messages!
 </system-out>
     <system-err>SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
 SLF4J: Defaulting to no-operation (NOP) logger implementation

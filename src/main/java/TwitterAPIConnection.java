@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 
 
@@ -20,6 +21,7 @@ public class TwitterAPIConnection {
     private String consumerKey, consumerSecret, token, tokenSecret;
     BlockingQueue<String> msgQueue;
     BasicClient client;
+
     public TwitterAPIConnection() {
         // Create an appropriately sized blocking queue
         BlockingQueue<String> queue = new LinkedBlockingQueue<String>(10000);
@@ -45,62 +47,32 @@ public class TwitterAPIConnection {
             .processor(new StringDelimitedProcessor(queue))
             .build();
 
-        // Establish a connection
-        client.connect();
+        //// Establish a connection
+        //client.connect();
 
-        // Do whatever needs to be done with messages
-        for (int msgRead = 0; msgRead < 1000; msgRead++) {
-            if (client.isDone()) {
-                System.out.println("Client connection closed unexpectedly: " + client.getExitEvent().getMessage());
-                break;
-            }
+        //// Do whatever needs to be done with messages
+        //for (int msgRead = 0; msgRead < 1000; msgRead++) {
+            //if (client.isDone()) {
+                //System.out.println("Client connection closed unexpectedly: " + client.getExitEvent().getMessage());
+                //break;
+            //}
 
-            try {
-                String msg = queue.poll(5, TimeUnit.SECONDS);
-                if (msg == null) {
-                    System.out.println("Did not receive a message in 5 seconds");
-                } else {
-                    System.out.println(msg);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+            //try {
+                //String msg = queue.poll(5, TimeUnit.SECONDS);
+                //if (msg == null) {
+                    //System.out.println("Did not receive a message in 5 seconds");
+                //} else {
+                    //System.out.println(msg);
+                //}
+            //} catch (InterruptedException e) {
+                //e.printStackTrace();
+            //}
+        //}
 
-        client.stop();
+        //client.stop();
 
         // Print some stats
         System.out.printf("The client read %d messages!\n", client.getStatsTracker().getNumMessages());
-        //msgQueue = new LinkedBlockingQueue<String>(10000);
-
-        //StatusesFilterEndpoint hosebirdEndpoint = new StatusesFilterEndpoint();
-
-        //readFromAuthenticationFile();
-
-        //Authentication hosebirdAuth = new OAuth1(consumerKey, consumerSecret,
-        //token, tokenSecret);
-
-        //ClientBuilder builder = new ClientBuilder() 
-        //.name("Hosebird-Client-01")
-        //.hosts(Constants.STREAM_HOST)
-        //.authentication(hosebirdAuth)
-        //.endpoint(hosebirdEndpoint)
-        //.processor(new StringDelimitedProcessor(msgQueue));
-
-
-        //BasicClient hosebirdClient = builder.build();
-
-        //hosebirdClient.connect();
-
-
-        //while (!hosebirdClient.isDone()) {
-        //try {
-        //String message = msgQueue.take();
-        //System.out.println(message);
-        //} catch (Exception e) {
-        //e.printStackTrace();
-        //}
-        //}
 
     }
 
@@ -129,6 +101,29 @@ public class TwitterAPIConnection {
         return msgQueue.peek();
 
     }
+
+
+    /**
+     * Get a requested number of messages since first creation of the instance.
+     *
+     * @param nrOfMessages
+     */
+    public ArrayList<String> getNrOfMessages(int nrOfMessages) {
+        client.connect();
+        ArrayList<String> messages = new ArrayList<String>();
+        for (int msgRead = 0; msgRead < nrOfMessages; msgRead++) {
+            try {
+                messages.add(msgQueue.poll(5, TimeUnit.SECONDS));
+                System.out.println(messages.get(0));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        client.stop();
+        return messages;
+    
+    }
+
 
 
 }
