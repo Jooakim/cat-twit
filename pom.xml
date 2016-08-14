@@ -19,5 +19,11 @@
       <artifactId>hbc-core</artifactId> <!-- or hbc-twitter4j -->
       <version>2.2.0</version> <!-- or whatever the latest version is -->
     </dependency>
-  </dependencies>
+    <!-- https://mvnrepository.com/artifact/org.glassfish/javax.json -->
+    <dependency>
+        <groupId>org.glassfish</groupId>
+        <artifactId>javax.json</artifactId>
+        <version>1.0.4</version>
+    </dependency>
+</dependencies>
 </project>

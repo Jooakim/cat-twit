@@ -1,9 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TwitterAPITest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.253 sec <<< FAILURE!
-testConnection(TwitterAPITest)  Time elapsed: 0.25 sec  <<< ERROR!
-java.lang.NullPointerException
-	at TwitterAPIConnection.getNrOfMessages(TwitterAPIConnection.java:112)
-	at TwitterAPITest.testConnection(TwitterAPITest.java:27)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.416 sec

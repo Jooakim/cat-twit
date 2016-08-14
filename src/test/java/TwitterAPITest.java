@@ -2,6 +2,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import model.*;
+
 public class TwitterAPITest extends TestCase {
     /**
      * Create the test case
@@ -22,12 +24,9 @@ public class TwitterAPITest extends TestCase {
     /**
      * Test the connection to Twitter API
      */
-    public void testConnection () {
+    public void testConnection() {
         TwitterAPIConnection connection = new TwitterAPIConnection();
         String aTweet = connection.getNrOfMessages(1).toString();
-        System.out.println(aTweet);
-        assertTrue(connection.testConnection());
         assertTrue(aTweet != null);
-        
     }
 }

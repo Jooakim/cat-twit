@@ -1,2 +1,3 @@
-/home/joakim/programming/cat-twit/src/main/java/TwitterAPIConnection.java
+/home/joakim/programming/cat-twit/src/main/java/model/TwitterMiner.java
+/home/joakim/programming/cat-twit/src/main/java/model/TwitterAPIConnection.java
 /home/joakim/programming/cat-twit/src/main/java/App.java
