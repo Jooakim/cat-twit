@@ -91,7 +91,6 @@ public class TwitterAPIConnection {
             try {
                 String msg = msgQueue.poll(5, TimeUnit.SECONDS);
                 messages.add(msg);
-                System.out.println(messages.get(0));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
