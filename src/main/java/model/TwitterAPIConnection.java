@@ -16,6 +16,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 
@@ -26,7 +27,9 @@ public class TwitterAPIConnection {
     private StatusesSampleEndpoint endpoint;
     private StringDelimitedProcessor stringProcessor;
 
-    public TwitterAPIConnection() {
+    private static final TwitterAPIConnection connection = new TwitterAPIConnection();
+
+    private TwitterAPIConnection() {
         // Create an appropriately sized blocking queue
         msgQueue = new LinkedBlockingQueue<String>(10000);
 
@@ -35,13 +38,11 @@ public class TwitterAPIConnection {
         endpoint = new StatusesSampleEndpoint();
         endpoint.stallWarnings(false);
 
-        //Authentication auth = new OAuth1(consumerKey, consumerSecret, token, secret);
         readFromAuthenticationFile();
 
         Authentication auth = new OAuth1(consumerKey, consumerSecret,
                 token, tokenSecret);
         stringProcessor = new StringDelimitedProcessor(msgQueue);
-        //Authentication auth = new com.twitter.hbc.httpclient.auth.BasicAuth(username, password);
 
         // Create a new BasicClient. By default gzip is enabled.
         client = new ClientBuilder()
@@ -71,7 +72,7 @@ public class TwitterAPIConnection {
     }
 
     public boolean testConnection() {
-        return true;
+        return connection != null && client != null;
     }
 
     public String getLatestTweet() {
@@ -84,12 +85,12 @@ public class TwitterAPIConnection {
      *
      * @param nrOfMessages
      */
-    public ArrayList<String> getNrOfMessages(int nrOfMessages) {
+    public LinkedList<String> getNrOfMessages(int nrOfMessages) {
         client.connect();
-        ArrayList<String> messages = new ArrayList<String>();
+        LinkedList<String> messages = new LinkedList<String>();
         for (int msgRead = 0; msgRead < nrOfMessages; msgRead++) {
             try {
-                String msg = msgQueue.poll(5, TimeUnit.SECONDS);
+                String msg = msgQueue.poll(1, TimeUnit.SECONDS);
                 messages.add(msg);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -97,5 +98,9 @@ public class TwitterAPIConnection {
         }
         client.stop();
         return messages;
+    }
+    
+    public static TwitterAPIConnection getConnection() {
+    	return connection;
     }
 }
