@@ -27,6 +27,7 @@ public class TwitterAPIConnection {
     private StatusesSampleEndpoint endpoint;
     private StringDelimitedProcessor stringProcessor;
 
+
     private static final TwitterAPIConnection connection = new TwitterAPIConnection();
 
     private TwitterAPIConnection() {
@@ -38,7 +39,7 @@ public class TwitterAPIConnection {
         endpoint = new StatusesSampleEndpoint();
         endpoint.stallWarnings(false);
 
-        readFromAuthenticationFile();
+        readFromAuthenticationFile("/home/joakim/.twitterAuth");
 
         Authentication auth = new OAuth1(consumerKey, consumerSecret,
                 token, tokenSecret);
@@ -52,16 +53,16 @@ public class TwitterAPIConnection {
             .authentication(auth)
             .processor(stringProcessor)
             .build();
+
     }
 
     /**
      * Reads twitter authentication from a hidden file
      * in users home directory
      */
-    private void readFromAuthenticationFile() {
-        String authPath = "/home/joakim/.twitterAuth";
+    private void readFromAuthenticationFile(String authPath) {
         File authFile = new File(authPath);
-        if (authFile.exists() && !authFile.isDirectory()){
+        if (authFile.exists() && !authFile.isDirectory()) {
             try {
                 Scanner scan = new Scanner(authFile);
                 consumerKey = scan.nextLine();
@@ -72,12 +73,7 @@ public class TwitterAPIConnection {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        } else {
-        }
-    }
-
-    public boolean testConnection() {
-        return connection != null && client != null;
+        } 
     }
 
     public String getLatestTweet() {
@@ -104,8 +100,23 @@ public class TwitterAPIConnection {
         client.stop();
         return messages;
     }
-    
+
+    /**
+     * Returns the connection to the Twitter API
+     */
     public static TwitterAPIConnection getConnection() {
-    	return connection;
+        return connection;
+    }
+
+    /**
+     * Checks if there is a readable file under the given path
+     */
+    public boolean authFileExist(String authPath) {
+        File authFile = new File(authPath);
+        if (authFile.exists() && !authFile.isDirectory()) {
+            return true;
+        } else {
+            return false; 
+        }
     }
 }
