@@ -59,15 +59,20 @@ public class TwitterAPIConnection {
      * in users home directory
      */
     private void readFromAuthenticationFile() {
-        try {
-            Scanner scan = new Scanner(new File("/home/joakim/.twitterAuth"));
-            consumerKey = scan.nextLine();
-            consumerSecret = scan.nextLine();
-            token = scan.nextLine();
-            tokenSecret = scan.nextLine();
-            scan.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        String authPath = "/home/joakim/.twitterAuth";
+        File authFile = new File(authPath);
+        if (authFile.exists() && !authFile.isDirectory()){
+            try {
+                Scanner scan = new Scanner(authFile);
+                consumerKey = scan.nextLine();
+                consumerSecret = scan.nextLine();
+                token = scan.nextLine();
+                tokenSecret = scan.nextLine();
+                scan.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
         }
     }
 
