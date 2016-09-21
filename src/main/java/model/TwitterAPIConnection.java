@@ -31,6 +31,7 @@ public class TwitterAPIConnection {
     private static final TwitterAPIConnection connection = new TwitterAPIConnection();
 
     private TwitterAPIConnection() {
+        String authPath = "/home/joakim/.twitterAuth";
         // Create an appropriately sized blocking queue
         msgQueue = new LinkedBlockingQueue<String>(10000);
 
@@ -39,21 +40,23 @@ public class TwitterAPIConnection {
         endpoint = new StatusesSampleEndpoint();
         endpoint.stallWarnings(false);
 
-        readFromAuthenticationFile("/home/joakim/.twitterAuth");
+        if (authFileExist(authPath)) {
+            readFromAuthenticationFile(authPath);
 
-        Authentication auth = new OAuth1(consumerKey, consumerSecret,
-                token, tokenSecret);
-        stringProcessor = new StringDelimitedProcessor(msgQueue);
+            Authentication auth = new OAuth1(consumerKey, consumerSecret,
+                    token, tokenSecret);
+            stringProcessor = new StringDelimitedProcessor(msgQueue);
 
-        // Create a new BasicClient. By default gzip is enabled.
-        client = new ClientBuilder()
-            .name("sampleExampleClient")
-            .hosts(Constants.STREAM_HOST)
-            .endpoint(endpoint)
-            .authentication(auth)
-            .processor(stringProcessor)
-            .build();
+            // Create a new BasicClient. By default gzip is enabled.
+            client = new ClientBuilder()
+                .name("sampleExampleClient")
+                .hosts(Constants.STREAM_HOST)
+                .endpoint(endpoint)
+                .authentication(auth)
+                .processor(stringProcessor)
+                .build();
 
+        }
     }
 
     /**
@@ -111,7 +114,7 @@ public class TwitterAPIConnection {
     /**
      * Checks if there is a readable file under the given path
      */
-    public boolean authFileExist(String authPath) {
+    public static boolean authFileExist(String authPath) {
         File authFile = new File(authPath);
         if (authFile.exists() && !authFile.isDirectory()) {
             return true;

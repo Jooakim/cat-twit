@@ -25,8 +25,8 @@ public class TwitterAPITest extends TestCase {
      * Test the connection to Twitter API
      */
     public void testConnection() {
+        if (TwitterAPIConnection.authFileExist("/home/joakim/.twitterAuth")) {
         TwitterAPIConnection connection = TwitterAPIConnection.getConnection();
-        if (connection.authFileExist("/home/joakim/.twitterAuth")) {
             String aTweet = connection.getNrOfMessages(1).toString();
             assertTrue(aTweet != null);
         }
