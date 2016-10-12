@@ -1,30 +1,15 @@
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
+import static org.junit.Assert.*;
 import static org.junit.Assume.*;
 
 import model.*;
 
-public class TwitterAPITest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public TwitterAPITest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(TwitterAPITest.class);
-    }
+public class TwitterAPITest {
 
     /**
      * Test the connection to Twitter API
      */
+    @Test
     public void testConnection() {
         assumeTrue(TwitterAPIConnection.authFileExist("/home/joakim/.twitterAuth"));
         TwitterAPIConnection connection = TwitterAPIConnection.getConnection();
