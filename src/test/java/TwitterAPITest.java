@@ -1,6 +1,7 @@
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import static org.junit.Assume.*;
 
 import model.*;
 
@@ -25,10 +26,9 @@ public class TwitterAPITest extends TestCase {
      * Test the connection to Twitter API
      */
     public void testConnection() {
-        if (TwitterAPIConnection.authFileExist("/home/joakim/.twitterAuth")) {
+        assumeTrue(TwitterAPIConnection.authFileExist("/home/joakim/.twitterAuth"));
         TwitterAPIConnection connection = TwitterAPIConnection.getConnection();
-            String aTweet = connection.getNrOfMessages(1).toString();
-            assertTrue(aTweet != null);
-        }
+        String aTweet = connection.getNrOfMessages(1).toString();
+        assertTrue(aTweet != null);
     }
 }
