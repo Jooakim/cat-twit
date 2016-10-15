@@ -37,5 +37,10 @@
             <artifactId>javax.json</artifactId>
             <version>1.0.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-tools</artifactId>
+            <version>1.6.0</version>
+        </dependency>
     </dependencies>
 </project>
