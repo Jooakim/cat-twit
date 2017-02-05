@@ -3,11 +3,12 @@ import java.util.LinkedList;
 
 import control.TwitterMiner;
 import model.TwitterParser;
+import org.apache.log4j.BasicConfigurator;
 
 public class App {
-
     public static void main(String[] args) {
     	final int NR_OF_TWEETS = 1000;
+//        BasicConfigurator.configure();
         TwitterMiner miner = new TwitterMiner();
         TwitterParser parser = new TwitterParser(miner.collectNrOfTweets(NR_OF_TWEETS));
 

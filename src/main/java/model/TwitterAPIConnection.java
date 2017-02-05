@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -24,16 +23,16 @@ public class TwitterAPIConnection {
     private String consumerKey, consumerSecret, token, tokenSecret;
     private BlockingQueue<String> msgQueue;
     private BasicClient client;
-    private StatusesSampleEndpoint endpoint;
-    private StringDelimitedProcessor stringProcessor;
 
 
     private static final TwitterAPIConnection connection = new TwitterAPIConnection();
 
     private TwitterAPIConnection() {
+        StatusesSampleEndpoint endpoint;
+        StringDelimitedProcessor stringProcessor;
         String authPath = "/home/joakim/.twitterAuth";
         // Create an appropriately sized blocking queue
-        msgQueue = new LinkedBlockingQueue<String>(10000);
+        msgQueue = new LinkedBlockingQueue<>(10000);
 
         // Define our endpoint: By default, delimited=length is set (we need this for our processor)
         // and stall warnings are on.
@@ -91,7 +90,7 @@ public class TwitterAPIConnection {
      */
     public LinkedList<String> getNrOfMessages(int nrOfMessages) {
         client.connect();
-        LinkedList<String> messages = new LinkedList<String>();
+        LinkedList<String> messages = new LinkedList<>();
         for (int msgRead = 0; msgRead < nrOfMessages; msgRead++) {
             try {
                 String msg = msgQueue.poll(1, TimeUnit.SECONDS);
@@ -116,10 +115,6 @@ public class TwitterAPIConnection {
      */
     public static boolean authFileExist(String authPath) {
         File authFile = new File(authPath);
-        if (authFile.exists() && !authFile.isDirectory()) {
-            return true;
-        } else {
-            return false; 
-        }
+        return authFile.exists() && !authFile.isDirectory();
     }
 }

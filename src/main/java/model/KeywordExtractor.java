@@ -1,6 +1,5 @@
 package model;
 
-import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,7 +26,7 @@ public class KeywordExtractor {
 		return null;
 	}
 	
-	private String parseString(String str) throws FileNotFoundException {
+	private void parseString(String str) throws FileNotFoundException {
 			InputStream modelIn = new FileInputStream("util/en-parser-chunking.bin");
 			Parser parser;
 		    try {
@@ -36,24 +35,15 @@ public class KeywordExtractor {
 		      Parse p = new Parse(str, null, null, 0, 0);
 		      p = parser.parse(p);
 		      System.out.println(p.getText());
-		    }
-		    catch (IOException e) {
+		    } catch (IOException e) {
 		      e.printStackTrace();
-		    }
-		    finally {
-		      if (modelIn != null) {
+		    } finally {
 		        try {
 		          modelIn.close();
+                } catch (IOException e) {
+		            e.printStackTrace();
 		        }
-		        catch (IOException e) {
-		        }
-		      }
-		    }
-
-		    		
-
-
-		return null;
-	}
-
+            }
+    }
 }
+

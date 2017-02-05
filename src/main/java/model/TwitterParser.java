@@ -29,14 +29,11 @@ public class TwitterParser {
         				if (key.equals("text")) {
         					parser.next();
         					text = parser.getString();
-        					continue;
-        				} else if (key.equals("lang")) {
+						} else if (key.equals("lang")) {
         					parser.next();
-        					if (languages.contains(parser.getString()) || languages == null) {
+        					if (languages.contains(parser.getString())) {
         						correctLang = true;
-        					} else {
-        						continue; 
-        					}
+							}
         				}
         			}
         		}
