@@ -17,6 +17,15 @@ import java.util.List;
 public class SentimentAnalyzer {
 
     private DoccatModel model;
+    private static final String SAVED_MODEL_LOCATION = "src/main/resources/savedModel";
+
+    public SentimentAnalyzer() {
+        if (hasSavedModel()) {
+            fetchSavedModel();
+        } else {
+            trainModel("util/test.txt");
+        }
+    }
 
     public SentimentAnalyzer(String trainFile) {
         trainModel(trainFile);
@@ -31,6 +40,11 @@ public class SentimentAnalyzer {
         }
 
         return sentiments;
+    }
+
+    private boolean hasSavedModel() {
+        File f = new File(SAVED_MODEL_LOCATION);
+        return f.exists();
     }
 
     private boolean determineSentiment(String tweet) {
@@ -51,6 +65,7 @@ public class SentimentAnalyzer {
             TrainingParameters params = createParams();
 
             model = DocumentCategorizerME.train("en", sampleStream, params, factory);
+            saveModel(model);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,5 +78,28 @@ public class SentimentAnalyzer {
         parameters.put("Iterations", "25");
 
         return parameters;
+    }
+
+    public void fetchSavedModel() {
+        try {
+            BufferedInputStream modelIn = new BufferedInputStream(new FileInputStream(SAVED_MODEL_LOCATION));
+            model = new DoccatModel(modelIn);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveModel(DoccatModel model) {
+        try {
+            BufferedOutputStream modelOut = new BufferedOutputStream(new FileOutputStream(SAVED_MODEL_LOCATION));
+            model.serialize(modelOut);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public DoccatModel getModel() {
+        return model;
     }
 }

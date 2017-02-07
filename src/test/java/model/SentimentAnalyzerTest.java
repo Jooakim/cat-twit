@@ -1,6 +1,9 @@
 package model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import opennlp.tools.doccat.DoccatModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,10 +20,10 @@ public class SentimentAnalyzerTest {
     SentimentAnalyzer analyzer;
     @Before
     public void setUp() {
-        analyzer = new SentimentAnalyzer("util/test.txt");
     }
     @Test
-    public void sentimetnTest() {
+    public void sentimentTest() {
+        analyzer = new SentimentAnalyzer();
         List<String> tweets = new ArrayList<>();
         tweets.add("I hate my life");
         tweets.add("I love my life");
@@ -35,7 +38,15 @@ public class SentimentAnalyzerTest {
         Map<String, Boolean> sentiments = analyzer.analyzeSentiment(tweets);
 
         assertEquals("The sentiment is not correct", correctSentiments, sentiments) ;
-
-
+    }
+    @Test
+    public void testWriteAndFetchModel() {
+        analyzer = new SentimentAnalyzer("util/tweets.txt");
+        DoccatModel model = analyzer.getModel();
+        analyzer.saveModel(model);
+        analyzer.fetchSavedModel();
+        DoccatModel fetchedModel = analyzer.getModel();
+//        assertEquals("The saved model is not equal the original model", model, fetchedModel);
+        assertTrue(fetchedModel.isLoadedFromSerialized());
     }
 }
