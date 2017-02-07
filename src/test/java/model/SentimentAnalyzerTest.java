@@ -41,7 +41,7 @@ public class SentimentAnalyzerTest {
     }
     @Test
     public void testWriteAndFetchModel() {
-        analyzer = new SentimentAnalyzer("util/test.txt");
+        analyzer = new SentimentAnalyzer();
         DoccatModel model = analyzer.getModel();
         analyzer.saveModel(model);
         analyzer.fetchSavedModel();
