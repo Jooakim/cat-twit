@@ -1,0 +1,49 @@
+2017-02-06 20:25:41 INFO  BasicClient:95 - New connection executed: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 20:25:41 INFO  ClientBase:173 - sampleExampleClient Establishing a connection
+}2017-02-06 20:25:41 INFO  ClientBase:240 - sampleExampleClient Processing connection data
+}2017-02-06 20:25:41 INFO  BasicClient:121 - Stopping the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 20:25:41 INFO  ClientBase:276 - sampleExampleClient exit event - Stopped by user: waiting for 5000 ms
+}2017-02-06 20:25:41 INFO  ClientBase:147 - sampleExampleClient Done processing, preparing to close connection
+}2017-02-06 20:25:41 INFO  ClientBase:164 - sampleExampleClient Shutting down httpclient connection manager
+}2017-02-06 20:25:41 INFO  BasicClient:124 - Successfully stopped the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:31:48 INFO  BasicClient:95 - New connection executed: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:31:48 INFO  ClientBase:173 - sampleExampleClient Establishing a connection
+}2017-02-06 23:31:49 INFO  BasicClient:121 - Stopping the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:31:49 INFO  ClientBase:276 - sampleExampleClient exit event - Stopped by user: waiting for 5000 ms
+}2017-02-06 23:31:49 INFO  ClientBase:240 - sampleExampleClient Processing connection data
+}2017-02-06 23:31:49 INFO  ClientBase:147 - sampleExampleClient Done processing, preparing to close connection
+}2017-02-06 23:31:49 INFO  ClientBase:164 - sampleExampleClient Shutting down httpclient connection manager
+}2017-02-06 23:31:49 INFO  BasicClient:124 - Successfully stopped the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:32:29 INFO  BasicClient:95 - New connection executed: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:32:29 INFO  ClientBase:173 - sampleExampleClient Establishing a connection
+}2017-02-06 23:32:30 INFO  ClientBase:240 - sampleExampleClient Processing connection data
+}2017-02-06 23:32:54 INFO  BasicClient:121 - Stopping the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:32:54 INFO  ClientBase:276 - sampleExampleClient exit event - Stopped by user: waiting for 5000 ms
+}2017-02-06 23:32:54 INFO  ClientBase:147 - sampleExampleClient Done processing, preparing to close connection
+}2017-02-06 23:32:54 INFO  ClientBase:164 - sampleExampleClient Shutting down httpclient connection manager
+}2017-02-06 23:32:54 INFO  BasicClient:124 - Successfully stopped the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:34:13 INFO  BasicClient:95 - New connection executed: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:34:13 INFO  ClientBase:173 - sampleExampleClient Establishing a connection
+}2017-02-06 23:34:14 INFO  ClientBase:240 - sampleExampleClient Processing connection data
+}2017-02-06 23:34:37 INFO  BasicClient:121 - Stopping the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:34:37 INFO  ClientBase:276 - sampleExampleClient exit event - Stopped by user: waiting for 5000 ms
+}2017-02-06 23:34:37 INFO  ClientBase:147 - sampleExampleClient Done processing, preparing to close connection
+}2017-02-06 23:34:37 INFO  ClientBase:164 - sampleExampleClient Shutting down httpclient connection manager
+}2017-02-06 23:34:37 INFO  BasicClient:124 - Successfully stopped the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:36:15 INFO  BasicClient:95 - New connection executed: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:36:15 INFO  ClientBase:173 - sampleExampleClient Establishing a connection
+}2017-02-06 23:36:16 INFO  ClientBase:240 - sampleExampleClient Processing connection data
+}2017-02-06 23:36:38 INFO  BasicClient:121 - Stopping the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:36:38 INFO  ClientBase:276 - sampleExampleClient exit event - Stopped by user: waiting for 5000 ms
+}2017-02-06 23:36:38 INFO  ClientBase:147 - sampleExampleClient Done processing, preparing to close connection
+}2017-02-06 23:36:38 INFO  ClientBase:164 - sampleExampleClient Shutting down httpclient connection manager
+}2017-02-06 23:36:38 INFO  BasicClient:124 - Successfully stopped the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:37:18 INFO  BasicClient:95 - New connection executed: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:37:18 INFO  ClientBase:173 - sampleExampleClient Establishing a connection
+}2017-02-06 23:37:19 INFO  ClientBase:240 - sampleExampleClient Processing connection data
+}2017-02-06 23:37:41 INFO  BasicClient:121 - Stopping the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}2017-02-06 23:37:41 INFO  ClientBase:276 - sampleExampleClient exit event - Stopped by user: waiting for 5000 ms
+}2017-02-06 23:37:41 INFO  ClientBase:147 - sampleExampleClient Done processing, preparing to close connection
+}2017-02-06 23:37:41 INFO  ClientBase:164 - sampleExampleClient Shutting down httpclient connection manager
+}2017-02-06 23:37:41 INFO  BasicClient:124 - Successfully stopped the client: sampleExampleClient, endpoint: /1.1/statuses/sample.json?delimited=length
+}

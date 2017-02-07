@@ -41,12 +41,11 @@ public class SentimentAnalyzerTest {
     }
     @Test
     public void testWriteAndFetchModel() {
-        analyzer = new SentimentAnalyzer("util/tweets.txt");
+        analyzer = new SentimentAnalyzer("util/test.txt");
         DoccatModel model = analyzer.getModel();
         analyzer.saveModel(model);
         analyzer.fetchSavedModel();
         DoccatModel fetchedModel = analyzer.getModel();
-//        assertEquals("The saved model is not equal the original model", model, fetchedModel);
         assertTrue(fetchedModel.isLoadedFromSerialized());
     }
 }
